@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": false,
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "[scss]": {
+        "editor.formatOnSave": true
+    },
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true
+}
