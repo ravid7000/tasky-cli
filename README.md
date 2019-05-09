@@ -1,5 +1,4 @@
-# emergi_frontend
-POPUP Frontend
+# Tasky CLI
 
 # Prerequisite
 ```sh
