@@ -33,7 +33,7 @@
       "Components/*": ["src/Components/*"],
       "styles/*": ["src/styles/*"],
       "utils/*": ["src/utils/*"],
-      "store/*": ["src/store/*"],
+      "store/*": ["src/store/*"]
     }
   },
   "exclude": [

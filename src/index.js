@@ -1,3 +1,5 @@
-const Tasky = async () => {}
+const Tasky = async () => {
+    console.log('working!!!')
+}
 
-export default Tasky
+// export default Tasky
