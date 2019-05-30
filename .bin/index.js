@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander')
-const lib = require('../lib')
+const lib = require('../packages/src')
 
 const VERSION = '0.1.0'
 
