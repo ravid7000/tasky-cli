@@ -1,12 +1,13 @@
 {
-  "name": "tasky-cli",
+  "name": "tasky",
   "version": "0.1",
   "description": "Cli tool for Tasky",
-  "main": "index.js",
+  "main": ".bin/index.js",
   "repository": "https://github.com/ravid7000/tasky-cli.git",
   "author": "Ravi Dhiman <ravid7000@gmail.com>",
   "license": "MIT",
   "private": true,
+  "bin": ".bin/index.js",
   "scripts": {
     "start": "node_modules/.bin/tsc -w"
   },
