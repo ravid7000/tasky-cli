@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const assign_1 = __importDefault(require("lodash/assign"));
+const trim_1 = __importDefault(require("lodash/trim"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const crypto_1 = __importDefault(require("crypto"));
@@ -64,7 +65,7 @@ exports.getData = async () => {
             };
         }
         const newLineIndex = file.indexOf('\n');
-        const key = file.substring(0, newLineIndex);
+        const key = trim_1.default(file.substring(0, newLineIndex));
         const eData = JSON.parse(file.substring(newLineIndex + 1));
         return {
             key,
@@ -80,10 +81,16 @@ exports.getData = async () => {
         };
     }
 };
-exports.setData = async (data) => {
+exports.setData = async (data, override) => {
     try {
         const cipher = await exports.getData();
-        const dData = assign_1.default({}, cipher.d, data);
+        let dData = null;
+        if (override) {
+            dData = data;
+        }
+        else {
+            dData = assign_1.default({}, cipher.d, data);
+        }
         const eData = encrypt(cipher.key, cipher.i, dData);
         await writeFile(filePath, `${cipher.key} \n ${eData}`);
         return true;

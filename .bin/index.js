@@ -6,7 +6,20 @@ const lib = require('../packages/src')
 const VERSION = '0.1.0'
 
 program
-    .version(VERSION)
-    .option('login', 'Login to Tasky')
+    .version(VERSION, '-v, --version')
+    .usage('[command, [option]] ')
+
+program
+    .command('login')
+    .alias('l')
+    .description('Login to Tasky')
     .action(lib.login)
-    .parse(process.argv)
+
+program
+    .command('project')
+    .alias('p')
+    .option('-l, --list [value]', 'View projects list')
+    .description('View projects list or create project')
+    .action(lib.projects)
+
+program.parse(process.argv)

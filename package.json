@@ -1,5 +1,5 @@
 {
-  "name": "tasky",
+  "name": "tasky-cli",
   "version": "0.1",
   "description": "Cli tool for Tasky",
   "main": ".bin/index.js",
@@ -7,14 +7,18 @@
   "author": "Ravi Dhiman <ravid7000@gmail.com>",
   "license": "MIT",
   "private": true,
-  "bin": ".bin/index.js",
+  "bin": {
+    "tasky": ".bin/index.js"
+  },
   "scripts": {
-    "start": "node_modules/.bin/tsc -w"
+    "start": "node_modules/.bin/tsc -w",
+    "build": "node_modules/.bin/tsc"
   },
   "dependencies": {
     "@types/inquirer": "^6.0.3",
     "@types/lodash": "^4.14.132",
     "axios": "^0.18.0",
+    "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "crypto": "^1.0.1",
     "inquirer": "^6.3.1",

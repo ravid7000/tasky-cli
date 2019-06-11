@@ -26,7 +26,9 @@ const LOGIN = async () => {
         const answers = await inquirer_1.default.prompt(QUESTIONS);
         SPINNER.start();
         const response = await api_1.default.login(answers);
-        await storage_1.setData(response.data);
+        // tslint:disable-next-line: no-console
+        console.log(response);
+        await storage_1.setData(response, true);
         SPINNER.succeed('Logged in successfully.');
     }
     catch (err) {

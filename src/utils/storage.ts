@@ -1,4 +1,5 @@
 import assign from 'lodash/assign';
+import trim from 'lodash/trim';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
@@ -68,7 +69,7 @@ export const getData = async (): Promise<{
       };
     }
     const newLineIndex = file.indexOf('\n');
-    const key = file.substring(0, newLineIndex);
+    const key = trim(file.substring(0, newLineIndex));
     const eData = JSON.parse(file.substring(newLineIndex + 1));
     return {
       key,
@@ -84,10 +85,15 @@ export const getData = async (): Promise<{
   }
 };
 
-export const setData = async (data: object) => {
+export const setData = async (data: object, override?: boolean) => {
   try {
     const cipher = await getData();
-    const dData = assign({}, cipher.d, data);
+    let dData = null;
+    if (override) {
+      dData = data;
+    } else {
+      dData = assign({}, cipher.d, data);
+    }
     const eData = encrypt(cipher.key, cipher.i, dData);
     await writeFile(filePath, `${cipher.key} \n ${eData}`);
     return true;
